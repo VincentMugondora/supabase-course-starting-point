@@ -5,16 +5,12 @@ import supabase from "./supabase";
 const useCheckAuth = () => {
     const navigate = useNavigate();
 
-    useEffect(() => { 
+    useEffect(() => {
         supabase.auth.getUser().then(response => {
             if (response.data.user === null) {
-                navigate("login")
+                navigate("/login");
             }
-    }, [navigate]);
-
-        if (!isAuthenticated) {
-            navigate("/login");
-        }
+        });
     }, [navigate]);
 };
 
